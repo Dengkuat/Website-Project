@@ -1,12 +1,32 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./src/output.css" rel="stylesheet">
-    <title>Baumeister</title>
-  </head>
-  <body class="min-h-screen flex items-center justify-center bg-gray-100">
-    <h1 class="text-4xl font-bold text-blue-600">Group 4</h1>
-  </body>
+    <title>Website project template</title>
+</head>
+<script>
+    const loadComponents = (id, url) =>  {
+        fetch(url)
+        .then((response) => response.text())
+        .then((html) => {
+            document.getElementById(id).innerHTML = html;
+        });
+    }
+
+    window.onload = () => {
+        loadComponents('nav', 'src/sections/home/nav.html');
+        loadComponents('hero', 'src/sections/home/hero.html');
+        loadComponents('content', 'src/sections/home/content.html');
+        loadComponents('footer', 'src/sections/home/footer.html');
+    }
+</script>
+<body>
+    <div id="nav"></div>
+    <div id="hero"></div>
+    <div id="content"></div>
+    <div id="footer"></div>
+</body>
 </html>
+
