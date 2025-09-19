@@ -1,32 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./src/output.css" rel="stylesheet">
     <title>Website project template</title>
-</head>
-<script>
-    const loadComponents = (id, url) =>  {
-        fetch(url)
-        .then((response) => response.text())
-        .then((html) => {
-            document.getElementById(id).innerHTML = html;
-        });
-    }
 
-    window.onload = () => {
-        loadComponents('nav', 'src/sections/home/nav.html');
-        loadComponents('hero', 'src/sections/home/hero.html');
-        loadComponents('content', 'src/sections/home/content.html');
-        loadComponents('footer', 'src/sections/home/footer.html');
-    }
-</script>
-<body class="bg-backColor">
+    <script>
+        const loadComponents = (id, url, callback) => {
+            fetch(url)
+                .then((response) => response.text())
+                .then((html) => {
+                    document.getElementById(id).innerHTML = html;
+                    if (callback) callback();
+                });
+        };
+
+        function initNavbar() {
+            const menuBtn = document.getElementById("menu-btn");
+            const closeBtn = document.getElementById("close-btn");
+            const menu = document.getElementById("menu");
+
+            if (!menuBtn || !closeBtn || !menu) return;
+
+            function toggleMenu() {
+                menu.classList.toggle("hidden");
+                menuBtn.classList.toggle("hidden");
+                closeBtn.classList.toggle("hidden");
+            }
+
+            menuBtn.addEventListener("click", toggleMenu);
+            closeBtn.addEventListener("click", toggleMenu);
+
+            window.addEventListener("resize", () => {
+                if (window.innerWidth >= 1024) {
+                    menu.classList.add("hidden");
+                    closeBtn.classList.add("hidden");
+                    menuBtn.classList.remove("hidden");
+                }
+            });
+        }
+
+        window.onload = () => {
+            loadComponents('nav', 'src/sections/home/nav.html', initNavbar);
+            loadComponents('hero', 'src/sections/home/hero.html');
+            loadComponents('content', 'src/sections/home/content.html');
+            loadComponents('footer', 'src/sections/home/footer.html');
+        };
+    </script>
+</head>
+
+<body>
     <div id="nav"></div>
     <div id="hero"></div>
     <div id="content"></div>
     <div id="footer"></div>
 </body>
-</html>
 
+</html>
