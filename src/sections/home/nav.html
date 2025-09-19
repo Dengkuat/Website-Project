@@ -1,11 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <p class="bg-amber-100">Hello nav</p>
-</body>
-</html>
+
+<nav class="sticky top-0 z-50 bg-backColor">
+    <div class="flex justify-between items-center px-6 py-4 md:py-6">
+        <!-- Language Switch -->
+        <div class="flex flex-col text-sm leading-tight font-medium space-y-1 cursor-pointer">
+            <span>DE</span>
+            <span>EN</span>
+        </div>
+
+        <!-- Logo -->
+        <div>
+            <a href="/">
+                <img src="/src/images/Logo.svg" alt="logo" class="w-64 h-12 md:w-72 md:h-16">
+            </a>
+        </div>
+
+        <!-- medium/ small Menu Buttons -->
+        <div class="block lg:hidden">
+            <img src="/src/images/menubttn1.svg" alt="menu" class="w-10 h-6 md:w-12 md:h-8 cursor-pointer"
+                id="menu-btn">
+            <img src="/src/images/menubttn2.svg" alt="close" class="w-12 h-7 md:w-13 md:h-9 cursor-pointer hidden"
+                id="close-btn">
+        </div>
+
+        <!-- large menu list -->
+        <ul class="hidden lg:flex lg:flex-col text-right text-1xl space-y-2 font-bold">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#references">References</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- medium/small menu list -->
+<div id="menu"
+    class="hidden fixed top-[100px] left-0 w-full flex flex-col items-center z-30 text-primary text-3xl space-y-8 font-semibold">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#references">References</a>
+    <a href="#contact">Contact</a>
+</div>
